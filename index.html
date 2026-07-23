@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>LaTeX → Unicode</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css">
+
+</head>
+
+<body>
+
+    <main class="container">
+
+        <h1>
+          <span class="latex-logo">
+            L<span class="latex-a">A</span>T<span class="latex-e">E</span>X
+          </span>
+          → Unicode
+        </h1>
+        <p class="subtitle">
+
+            Convert basic LaTeX-like mathematical notation into monospace Unicode block notation.
+
+        </p>
+
+
+         <section class="panel">
+
+             <h2>Examples</h2>
+             
+             <div class="examples">
+             
+                 <button class="example">Matrix</button>
+                 <button class="example">Fraction</button>
+                 <button class="example">Sum</button>
+                 <button class="example">Integral</button>
+                 <button class="example">Root</button>
+                 <button class="example">Modulus</button>
+             
+             </div>
+         
+         </section>
+
+        <section class="panel">
+
+            <h2>LaTeX input</h2>
+
+            <textarea
+                id="latexInput"
+                spellcheck="false"
+                placeholder="Type LaTeX here..."></textarea>
+
+        </section>
+
+        <section class="panel">
+
+            <h2>Unicode output</h2>
+
+            <pre id="unicodeOutput"></pre>
+
+        </section>
+
+        <div class="buttons">
+
+            <button id="copyButton">
+
+                Copy Unicode
+
+            </button>
+
+            <button id="clearButton">
+
+                Clear
+
+            </button>
+
+        </div>
+
+    </main>
+
+    <footer>
+
+        © 2026 Janne Lampilahti - Released under the MIT License.
+
+    </footer>
+
+    <script
+        type="module"
+        src="app.js"></script>
+
+</body>
+
+</html>

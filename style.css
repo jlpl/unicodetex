@@ -1,0 +1,193 @@
+body {
+
+    margin: 0;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    font-family: sans-serif;
+
+    background: #f6f6f6;
+
+}
+
+.container {
+
+    width: min(900px, 90vw);
+
+    padding: 2rem;
+
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+h1 {
+
+    margin: 0 0 0.3rem 0;
+
+    text-align: center;
+
+}
+
+.subtitle {
+
+    margin: 0 0 1rem 0;
+
+    text-align: center;
+
+}
+
+h2 {
+
+    margin: 1rem 0 0.4rem 0;
+
+    text-align: center;
+
+}
+
+.panel {
+
+    margin-top: 1rem;
+
+}
+
+textarea {
+
+    width: 100%;
+
+    min-height: 200px;
+
+    resize: vertical;
+
+    font-family: monospace;
+
+    font-size: 15px;
+
+    padding: 12px;
+
+    box-sizing: border-box;
+
+}
+
+#unicodeOutput {
+
+    min-height: 300px;
+
+    padding: 12px;
+
+    white-space: pre;
+
+    font-family: monospace;
+
+    border: 2px dashed #888;
+
+    border-radius: 6px;
+
+    background: white;
+
+    overflow: auto;
+
+}
+
+.buttons {
+
+    margin-top: 0.8rem;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 1rem;
+
+}
+
+button {
+
+    padding: 0.6rem 1.5rem;
+
+    font-size: 15px;
+
+}
+
+.examples {
+
+    margin-top: 1rem;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 0.6rem;
+
+    justify-content: center;
+
+}
+
+.example {
+
+    padding: 0.8rem 1.2rem;
+
+    border: 1px solid #bbb;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+}
+
+.latex-logo {
+
+    font-family: "Times New Roman", Times, serif;
+
+    font-weight: bold;
+
+    letter-spacing: -0.06em;
+
+}
+
+.latex-a {
+
+    font-size: 0.78em;
+
+    vertical-align: 0.30em;
+
+    margin-left: -0.12em;
+
+    margin-right: -0.08em;
+
+}
+
+.latex-e {
+
+    vertical-align: -0.18em;
+
+    margin-left: -0.10em;
+
+    margin-right: -0.04em;
+
+}
+
+footer {
+
+    margin-top: 1.5rem;
+
+    width: 100%;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 0.9rem;
+
+    padding: 0.8rem 0;
+
+}
