@@ -18,6 +18,7 @@ Useful for rendering math in plain-text and monospace environments:
 | Commands | `\frac`, `\int`, `\sum`, `\prod`, `\min`, `\max`, `\lim`, `\abs`, `\matrix`, `\sqrt` |
 | Delimiters | `()` |
 | Subscripts & Superscripts | `_`, `^` |
+
 **NOTE**: Monospace rendering may vary across devices.
 
 ## Examples
