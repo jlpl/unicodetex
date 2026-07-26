@@ -81,6 +81,8 @@ function makeBlock(lines, baseline = 0, attachment = null) {
 
 const LAYOUT = {
 
+    delimGap: 1,
+
     fractionGap: 0,
 
     limitGap: 1,
@@ -90,8 +92,6 @@ const LAYOUT = {
     matrixColumnGap: 1,
 
     matrixRowGap: 1,
-
-    radicalGap: 0
 
 };
 
@@ -844,6 +844,8 @@ function renderScripts(base, upper, lower) {
 
 function renderLimits(base, upper, lower) {
 
+    const limitGap = (upper && lower) ? LAYOUT.limitGap : 0;
+
     //--------------------------------------------------
     // Width
     //--------------------------------------------------
@@ -880,7 +882,7 @@ function renderLimits(base, upper, lower) {
 
             let i = 0;
 
-            i < LAYOUT.limitGap;
+            i < limitGap; // LAYOUT.limitGap
 
             i++
 
@@ -926,7 +928,7 @@ function renderLimits(base, upper, lower) {
 
             let i = 0;
 
-            i < LAYOUT.limitGap;
+            i < limitGap; // LAYOUT.limitGap
 
             i++
 
@@ -1335,38 +1337,18 @@ function stretchDelimiter(left, right, body) {
     }
 
     //--------------------------------------------------
-    // Determine symmetric height
+    // Determine height
     //--------------------------------------------------
+    const overhang = (left === "(" && right === ")") ? 1 : 0;
+    
+    const above = body.baseline + overhang;
+    
+    const below = body.height - body.baseline - 1 + overhang;
+    
+    const height = above + below + 1;
 
-    const above =
+    const baseline = body.baseline + overhang;
 
-        body.baseline;
-
-    const below =
-
-        body.height
-
-        - body.baseline
-
-        - 1;
-
-    const extent =
-
-        Math.max(
-
-            above,
-
-            below
-
-        );
-
-    const height =
-
-        2 * extent + 1;
-
-    const baseline =
-
-        extent;
 
     //--------------------------------------------------
     // Place body in symmetric canvas
@@ -1390,21 +1372,15 @@ function stretchDelimiter(left, right, body) {
 
     const L = {
 
-        "(": ["⎛", "⎜", "⎝"],
-
-        "[": ["⎡", "⎢", "⎣"],
-
-        "|": ["│", "│", "│"]
+        "(": ["┌", "│", "└"],
+        "|": ["│", "│", "│"],
 
     };
 
     const R = {
 
-        ")": ["⎞", "⎟", "⎠"],
-
-        "]": ["⎤", "⎥", "⎦"],
-
-        "|": ["│", "│", "│"]
+        ")": ["┐", "│", "┘"],
+        "|": ["│", "│", "│"],
 
     };
 
@@ -1613,7 +1589,7 @@ function sqrt(body) {
 
         const col = H - i;
 
-        lines[row][col] = "╱";
+        lines[row][col] = "/";
 
     }
 
@@ -1621,8 +1597,8 @@ function sqrt(body) {
     // Bottom hook
     //--------------------------------------------------
 
-    lines[H][0] = "╲";
-    lines[H][1] = "╱";
+    lines[H][0] = "\\";
+    lines[H][1] = "/";
 
     //--------------------------------------------------
     // Body
@@ -1977,113 +1953,101 @@ function renderMatrix(node) {
     //--------------------------------------------------
 
     const rendered =
+        node.rows.map(row => row.map(render));
 
-        node.rows.map(row =>
+    //--------------------------------------------------
+    // Column widths
+    //--------------------------------------------------
 
-            row.map(render)
+    const columnCount = Math.max(
+        ...rendered.map(r => r.length)
+    );
 
+    const columnWidths = [];
+
+    for (let c = 0; c < columnCount; c++) {
+
+        columnWidths[c] = Math.max(
+            ...rendered.map(row =>
+                row[c] ? row[c].width : 0
+            )
         );
 
+    }
+
     //--------------------------------------------------
-    // Cell dimensions
+    // Row heights/baselines
     //--------------------------------------------------
 
-    const all =
+    const rowHeights = [];
+    const rowBaselines = [];
 
-        rendered.flat();
+    for (let r = 0; r < rendered.length; r++) {
 
-    const cellWidth = Math.max(
+        rowBaselines[r] = Math.max(
+            ...rendered[r].map(cell => cell.baseline)
+        );
 
-        ...all.map(
+        const below = Math.max(
+            ...rendered[r].map(
+                cell => cell.height - cell.baseline - 1
+            )
+        );
 
-            c => c.width
+        rowHeights[r] =
+            rowBaselines[r] +
+            below +
+            1;
 
-        )
-
-    );
-
-    const cellHeight = Math.max(
-
-        ...all.map(
-
-            c => c.height
-
-        )
-
-    );
-
-    const cellBaseline = Math.max(
-
-        ...all.map(
-
-            c => c.baseline
-
-        )
-
-    );
+    }
 
     //--------------------------------------------------
     // Pad cells
     //--------------------------------------------------
 
-    const padded =
+    const padded = rendered.map(
 
-        rendered.map(row =>
+        (row, r) =>
 
-            row.map(cell =>
+            row.map(
 
-                padCell(
+                (cell, c) =>
 
-                    cell,
+                    padCell(
 
-                    cellWidth,
+                        cell,
+                        columnWidths[c],
+                        rowHeights[r],
+                        rowBaselines[r]
 
-                    cellHeight,
-
-                    cellBaseline
-
-                )
+                    )
 
             )
 
-        );
+    );
 
     //--------------------------------------------------
     // Render rows
     //--------------------------------------------------
 
     const renderedRows =
-
-        padded.map(
-
-            renderMatrixRow
-
-        );
+        padded.map(renderMatrixRow);
 
     //--------------------------------------------------
-    // Matrix body
+    // Assemble body
     //--------------------------------------------------
 
     const body =
-
-        assembleMatrixBody(
-
-            renderedRows
-
-        );
+        assembleMatrixBody(renderedRows);
 
     //--------------------------------------------------
-    // Surround with parentheses
+    // Parentheses
     //--------------------------------------------------
 
     return stretchDelimiter(
-
         "(",
-
         ")",
-
         body
-
     );
 
 }

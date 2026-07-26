@@ -9,7 +9,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-    <title>LaTeX → Unicode</title>
+    <title>UnicodeTeX</title>
 
     <link
         rel="stylesheet"
@@ -23,16 +23,14 @@
 
         <h1>
           <span class="latex-logo">
-            L<span class="latex-a">A</span>T<span class="latex-e">E</span>X
+              UnicodeT<span class="latex-e">E</span>X
           </span>
-          → Unicode
         </h1>
         <p class="subtitle">
-
-            Convert basic LaTeX-like mathematical notation into monospace Unicode block notation.
-
+            Convert L<span class="latex-a">A</span>T<span class="latex-e">E</span>X math into Unicode monospace graphics.
         </p>
 
+    <div style="height: 5px;"></div>
 
          <section class="panel">
 
@@ -46,14 +44,15 @@
                  <button class="example">Integral</button>
                  <button class="example">Root</button>
                  <button class="example">Modulus</button>
-             
+                 <button class="example">Limit</button>
+
              </div>
          
          </section>
 
         <section class="panel">
 
-            <h2>LaTeX input</h2>
+            <h2>Input</h2>
 
             <textarea
                 id="latexInput"
@@ -64,7 +63,7 @@
 
         <section class="panel">
 
-            <h2>Unicode output</h2>
+            <h2>Output</h2>
 
             <pre id="unicodeOutput"></pre>
 
@@ -74,7 +73,7 @@
 
             <button id="copyButton">
 
-                Copy Unicode
+                Copy
 
             </button>
 
@@ -85,6 +84,49 @@
             </button>
 
         </div>
+
+        <div style="height: 40px;"></div>
+    
+    <section class="panel">
+        
+        <h2>Supported notation</h2>
+        
+        <table style="border-collapse: collapse; width: 100%; border: 1px solid #000000; background-color: #ffffff; font-size: 15px;">
+          <thead>
+            <tr style="background-color: #ffffff;">
+              <th style="border: 1px solid #000000; padding: 8px 12px; text-align: left; font-size: 15px;">Category</th>
+              <th style="border: 1px solid #000000; padding: 8px 12px; text-align: left; font-size: 15px;">Commands &amp; Syntax</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="border: 1px solid #000000; padding: 8px 12px; text-align: left;">Greek Letters</td>
+              <td style="border: 1px solid #000000; padding: 8px 12px; text-align: left;"><code>\alpha</code>, <code>\beta</code>, <code>\gamma</code>, ...</td>
+            </tr>
+            <tr>
+              <td style="border: 1px solid #000000; padding: 8px 12px; text-align: left;">Mathematical Operators</td>
+              <td style="border: 1px solid #000000; padding: 8px 12px; text-align: left;"><code>\times</code>, <code>\partial</code>, <code>\approx</code>, ...</td>
+            </tr>
+            <tr>
+              <td style="border: 1px solid #000000; padding: 8px 12px; text-align: left;">Commands</td>
+              <td style="border: 1px solid #000000; padding: 8px 12px; text-align: left;">
+                <code>\frac</code>, <code>\int</code>, <code>\sum</code>, <code>\prod</code>, 
+                <code>\min</code>, <code>\max</code>, <code>\lim</code>, <code>\abs</code>, 
+                <code>\matrix</code>, <code>\sqrt</code>
+              </td>
+            </tr>
+            <tr>
+              <td style="border: 1px solid #000000; padding: 8px 12px; text-align: left;">Delimiters</td>
+              <td style="border: 1px solid #000000; padding: 8px 12px; text-align: left;"><code>()</code></td>
+            </tr>
+            <tr>
+              <td style="border: 1px solid #000000; padding: 8px 12px; text-align: left;">Subscripts &amp; Superscripts</td>
+              <td style="border: 1px solid #000000; padding: 8px 12px; text-align: left;"><code>_</code>, <code>^</code></td>
+            </tr>
+          </tbody>
+        </table>
+        
+    </section>
 
     </main>
 

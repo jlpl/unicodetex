@@ -82,68 +82,96 @@ export function parse(tokens) {
     // Element
     //--------------------------------------------------
 
+
     function parseElement() {
-
+    
         let node = parsePrimary();
-
+    
         //--------------------------------------------------
         // Attachments
         //--------------------------------------------------
-
+    
         let lower = null;
-
         let upper = null;
-
+    
         while (
-
+    
             !atEnd() &&
-
+    
             current().type === "attachment"
-
+    
         ) {
-
+    
             const attachment = advance();
-
-            const field =
-                attachment.info.field;
-
-            const value =
-                parseArgument();
-
+    
+            const field = attachment.info.field;
+    
+            const value = parseArgument();
+    
             if (field === "lower")
-
+    
                 lower = value;
-
+    
             else if (field === "upper")
-
+    
                 upper = value;
-
+    
         }
-
+    
+        //--------------------------------------------------
+        // Validate attachments
+        //--------------------------------------------------
+    
+        const rules = node.info?.attachment;
+    
+        if (rules) {
+    
+            if (upper !== null && !rules.upper)
+    
+                throw new Error(
+    
+                    `'${node.name}' does not accept an upper attachment.`
+    
+                );
+    
+            if (lower !== null && !rules.lower)
+    
+                throw new Error(
+    
+                    `'${node.name}' does not accept a lower attachment.`
+    
+                );
+    
+        }
+    
+        //--------------------------------------------------
+        // Build attachment node
+        //--------------------------------------------------
+    
         if (
-
+    
             lower !== null ||
-
+    
             upper !== null
-
+    
         ) {
-
+    
             return {
-
+    
                 type: "attachment",
-
+    
                 base: node,
-
+    
                 lower,
-
+    
                 upper
-
+    
             };
-
+    
         }
-
+    
         return node;
-
+    
     }
 
     //--------------------------------------------------

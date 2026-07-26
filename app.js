@@ -102,7 +102,7 @@ const examples = [
         title: "Matrix",
 
         latex:
-        "F^{\\mu\\nu} = \\matrix{{0,- \\frac{E_x}{c} ,- \\frac{E_y}{c},- \\frac{E_z}{c}}{\\frac{E_x}{c},0,- B_z,B_y}{\\frac{E_y}{c},B_z,0,- B_x}{\\frac{E_z}{c},- B_y,B_z,0}}"
+        "F^{\\mu\\nu} = \\matrix{{0,-\\frac{E_x}{c},-\\frac{E_y}{c},-\\frac{E_z}{c}}{\\frac{E_x}{c},0,-B_z,B_y}{\\frac{E_y}{c},B_z,0,-B_x}{\\frac{E_z}{c},-B_y,B_z,0}}"
 
     },
 
@@ -111,7 +111,7 @@ const examples = [
         title: "Fraction",
 
         latex:
-        "f(x) = \\frac{1}{(1 + \\frac{1}{x^3})} + \\frac{(\\frac{1}{x^5} - 5)}{1 + x}"
+        "\\varphi = \\frac{1}{1 + \\frac{1}{1 + \\frac{1}{1 + ...}}}"
 
     },
 
@@ -120,7 +120,7 @@ const examples = [
         title: "Sum",
 
         latex:
-        "\\Gamma(x) = \\sum_{n=1}^{\\infty} (\\frac{1}{n^x}) = 1 + \\frac{1}{2^x} + \\frac{1}{3^x} + \\frac{1}{4^x} + ..."
+        "\\zeta(x) = \\sum_{n=1}^{\\infty} (\\frac{1}{n^x}) = 1 + \\frac{1}{2^x} + \\frac{1}{3^x} + \\frac{1}{4^x} + ..."
 
     },
 
@@ -129,7 +129,7 @@ const examples = [
         title: "Integral",
 
         latex:
-        "\\int_{0}^{\\infty} \\frac{sin^2\\theta}{\\theta} d\\theta = \\frac{\\pi}{2}"
+        "\\int_{0}^{\\infty} (\\frac{sin^2\\theta}{\\theta})d\\theta = \\frac{\\pi}{2}"
 
     },
 
@@ -138,7 +138,7 @@ const examples = [
         title: "Root",
 
         latex:
-        "\\sqrt{x^2 - 1}"
+        "\\sigma =\\sqrt{\\frac{1}{N}\\sum_{i=1}^{N}(x_i- \\mu)^2}"
 
     },
 
@@ -148,6 +148,15 @@ const examples = [
 
         latex:
         "\\abs{e^{i\\theta}} = 1"
+
+    },
+
+    {
+
+        title: "Limit",
+
+        latex:
+        "e = \\lim_{n \\rightarrow \\infty} (1 + \\frac{1}{n})^n \\approx 2.71828..."
 
     }
 

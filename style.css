@@ -1,193 +1,170 @@
+:root {
+--section-gap: 1rem;
+}
+
 body {
-
-    margin: 0;
-
-    min-height: 100vh;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    font-family: sans-serif;
-
-    background: #f6f6f6;
-
+margin: 0;
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+font-size: 15px;
+font-family: "Times New Roman", Times, serif;
+background: #fff;
 }
 
 .container {
-
-    width: min(900px, 90vw);
-
-    padding: 2rem;
-
-    flex: 1;
-
-    display: flex;
-
-    flex-direction: column;
-
+width: min(700px, 90vw);
+padding: 2rem;
+flex: 1;
+display: flex;
+flex-direction: column;
+align-items: stretch;
+margin: 0 auto;
+gap: var(--section-gap);
 }
 
 h1 {
-
-    margin: 0 0 0.3rem 0;
-
-    text-align: center;
-
+margin: 0;
+text-align: left;
 }
 
 .subtitle {
-
-    margin: 0 0 1rem 0;
-
-    text-align: center;
-
+margin: 0;
+text-align: left;
 }
 
 h2 {
-
-    margin: 1rem 0 0.4rem 0;
-
-    text-align: center;
-
+margin: 0 0 0.75rem 0;
+text-align: left;
 }
 
 .panel {
-
-    margin-top: 1rem;
-
+margin: 0;
+width: 100%;
 }
 
 textarea {
-
-    width: 100%;
-
-    min-height: 200px;
-
-    resize: vertical;
-
-    font-family: monospace;
-
-    font-size: 15px;
-
-    padding: 12px;
-
-    box-sizing: border-box;
-
+width: 100%;
+min-height: 100px;
+resize: vertical;
+font-family: monospace;
+font-size: 15px;
+padding: 12px;
+box-sizing: border-box;
+text-align: left;
+background: #fff;
+border: 1px solid #000;
 }
 
 #unicodeOutput {
-
-    min-height: 300px;
-
-    padding: 12px;
-
-    white-space: pre;
-
-    font-family: monospace;
-
-    border: 2px dashed #888;
-
-    border-radius: 6px;
-
-    background: white;
-
-    overflow: auto;
-
+width: 100%;
+white-space: pre;
+overflow-x: auto;
+overflow-y: visible;
+font-family: monospace;
+font-size: 15px;
+text-align: left;
+margin: 0;
+padding: 0.75rem;
+border: 1px solid #000;
+background: #fff;
+display: block;
+box-sizing: border-box;
+height: auto;
+min-height: 3rem;
 }
 
 .buttons {
-
-    margin-top: 0.8rem;
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 1rem;
-
+margin: 0;
+display: flex;
+justify-content: center;
+gap: 1rem;
+width: 100%;
 }
 
-button {
-
-    padding: 0.6rem 1.5rem;
-
-    font-size: 15px;
-
-}
 
 .examples {
-
-    margin-top: 1rem;
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 0.6rem;
-
-    justify-content: center;
-
+margin-top: 1rem;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+gap: 0.6rem;
+width: 100%;
 }
 
-.example {
-
-    padding: 0.8rem 1.2rem;
-
-    border: 1px solid #bbb;
-
-    border-radius: 6px;
-
-    cursor: pointer;
-
-}
 
 .latex-logo {
-
-    font-family: "Times New Roman", Times, serif;
-
-    font-weight: bold;
-
-    letter-spacing: -0.06em;
-
+font-family: "Times New Roman", Times, serif;
+font-weight: bold;
+letter-spacing: -0.06em;
 }
 
 .latex-a {
-
-    font-size: 0.78em;
-
-    vertical-align: 0.30em;
-
-    margin-left: -0.12em;
-
-    margin-right: -0.08em;
-
+font-size: 0.78em;
+vertical-align: 0.30em;
+margin-left: -0.12em;
+margin-right: -0.08em;
 }
 
 .latex-e {
-
-    vertical-align: -0.18em;
-
-    margin-left: -0.10em;
-
-    margin-right: -0.04em;
-
+vertical-align: -0.18em;
+margin-left: -0.10em;
+margin-right: -0.04em;
 }
 
 footer {
+margin-top: var(--section-gap);
+width: 100%;
+font-family: sans-serif;
+text-align: center;
+color: #777;
+font-size: 0.9rem;
+padding: 0.8rem 0;
+}
 
-    margin-top: 1.5rem;
 
+button,
+.example {
     width: 100%;
+    padding: 0.8rem 1.2rem;
+    font-size: 15px;
+    font-family: inherit;
 
-    text-align: center;
+    background: #e0e0e0;
+    color: #000;
 
-    color: #777;
+    border: 1px solid #000;
+    border-radius: 6px;
 
-    font-size: 0.9rem;
+    cursor: pointer;
+    box-sizing: border-box;
 
-    padding: 0.8rem 0;
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.05s ease;
+}
 
+button:hover,
+.example:hover {
+    background: #c4c4c4;
+    border-color: #000;
+}
+
+button:active,
+.example:active {
+    background: #b0b0b0;
+    border-color: #000;
+    transform: translateY(1px);
+}
+
+button:focus-visible,
+.example:focus-visible {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+}
+
+table, th, td {
+  font-size: 15px;
 }

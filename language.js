@@ -74,9 +74,7 @@ export const language = {
     leftrightarrow: { type: "glyph", unicode: "↔" },
     Leftarrow:      { type: "glyph", unicode: "⇐" },
     Rightarrow:     { type: "glyph", unicode: "⇒" },
-    Leftrightarrow: { type: "glyph", unicode: "⇔" },
-    ell:            { type: "glyph", unicode: "ℓ" },
-    hbar:           { type: "glyph", unicode: "ℏ" },    
+    Leftrightarrow: { type: "glyph", unicode: "⇔" },   
     degree:         { type: "glyph", unicode: "°" },
     mapsto:         { type: "glyph", unicode: "↦" },
     pm:             { type: "glyph", unicode: "±" },
@@ -86,8 +84,11 @@ export const language = {
     parallel:       { type: "glyph", unicode: "∥" },
     perp:           { type: "glyph", unicode: "⊥" },
     times:          { type: "glyph", unicode: "×" },
-    "-":            { type: "glyph", unicode: "−" },
-
+    cdot:           { type: "glyph", unicode: "⋅" },
+    circ:           { type: "glyph", unicode: "∘" },
+    otimes:         { type: "glyph", unicode: "⊗" },
+    star:           { type: "glyph", unicode: "⋆" },
+    
     // =====================================================
     // Extended glyphs
     // =====================================================
@@ -223,16 +224,7 @@ export const language = {
         right: ")"
     
     },
-    
-    "[": {
-    
-        type: "delimiter",
-        
-        left: "[",
-    
-        right: "]"
-    
-    },
+
 
     "_": {
     
