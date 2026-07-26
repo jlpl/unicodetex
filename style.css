@@ -35,6 +35,11 @@ margin: 0;
 text-align: left;
 }
 
+.text {
+margin: 0.25rem 0 0 0;
+text-align: left;
+}
+
 h2 {
 margin: 0 0 0.75rem 0;
 text-align: left;
@@ -121,6 +126,10 @@ margin-right: -0.08em;
 vertical-align: -0.18em;
 margin-left: -0.10em;
 margin-right: -0.04em;
+}
+
+.boldtext {
+font-weight: bold;
 }
 
 footer {
